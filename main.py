@@ -17,7 +17,8 @@ pygame.display.flip()
 
 def fpstool(i):
     i=0
-    while
+    while True:
+        None
 
 
 
@@ -33,20 +34,25 @@ class P():
         self.sx=0
         self.sy=0
         keys = pygame.key.get_pressed()
+        keymod = pygame.key.get_mods()
         #print(keys)
-        if keys[pygame.K_d]:
+        if keys[pygame.K_RIGHT]:
             self.sx=8
-        if keys[pygame.K_a]:
+        if keys[pygame.K_LEFT]:
             self.sx = -8
-        if keys[pygame.K_d]:
-            self.sx = 8
-        if keys[pygame.K_a]:
-            self.sx = -8
+        if (keymod & KMOD_SHIFT == True) and (keys[pygame.K_RIGHT]):
+            self.sx = 10
+        if (keymod & KMOD_SHIFT == True) and (keys[pygame.K_LEFT]):
+            self.sx = -10
         self.rect.centerx += self.sx
-        if keys[pygame.K_w]:
+        if keys[pygame.K_UP]:
             self.sy = -8
-        if keys[pygame.K_s]:
+        if keys[pygame.K_DOWN]:
             self.sy = 8
+        if (keymod & KMOD_SHIFT == True) and (keys[pygame.K_UP]):
+            self.sx = -10
+        if (keymod & KMOD_SHIFT == True) and (keys[pygame.K_DOWN]):
+            self.sx = 10
         self.rect.centery+=self.sy
 
 Clock=pygame.time.Clock()
